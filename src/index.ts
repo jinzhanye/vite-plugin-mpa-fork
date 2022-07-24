@@ -26,6 +26,7 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
   return {
     name,
     enforce: 'pre',
+
     config(config) {
       resolvedConfig = config
       config.build = config.build || {}
@@ -36,6 +37,7 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
       config.server.open =
         options.open === '' ? getFirstPage(config.build.rollupOptions.input) : options.open
     },
+
     configureServer({ middlewares: app }) {
       app.use(
         // @see https://github.com/vitejs/vite/blob/8733a83d291677b9aff9d7d78797ebb44196596e/packages/vite/src/node/server/index.ts#L433
@@ -48,6 +50,7 @@ export default function mpa(userOptions: UserOptions = {}): Plugin {
         }),
       )
     },
+
     closeBundle() {
       const root = resolvedConfig.root || process.cwd()
       const dest = (resolvedConfig.build && resolvedConfig.build.outDir) || 'dist'

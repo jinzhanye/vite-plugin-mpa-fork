@@ -147,5 +147,30 @@ export function getHistoryReWriteRuleList(options: MpaOptions): Rewrite[] {
       to,
     })
   })
-  return list
+
+  console.log('list:', list)
+
+  // { from: /^\/demo$/, to: './src/pages/demo/index.html' },
+
+  return [
+    { from: /^\/$/, to: './src/pages/index/index.html' },
+    { from: /^\/demo\/index.html\/*/, to: './src/pages/demo/index.html' },
+    { from: /^\/demo\/index.html$/, to: './src/pages/demo/index.html' },
+    { from: /^\/demo.html$/, to: './src/pages/demo/index.html' },
+
+    { from: /^\/demo\/*/, to: './src/pages/demo/index.html' },
+
+    {
+      from: /^\/demo02\/index.html\/*/,
+      to: './src/pages/demo02/index.html',
+    },
+    {
+      from: /^\/demo02\/index.html$/,
+      to: './src/pages/demo02/index.html',
+    },
+    { from: /^\/demo02.html$/, to: './src/pages/demo02/index.html' },
+    { from: /^\/demo02$/, to: './src/pages/demo02/index.html' },
+    { from: /^\/demo02\/*/, to: './src/pages/demo02/index.html' },
+  ]
+
 }
